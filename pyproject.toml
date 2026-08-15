@@ -1,0 +1,36 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pairs-trading-toy"
+version = "0.1.0"
+description = "A small educational pairs-trading research project using synthetic data"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.12"
+authors = [{ name = "areigc" }]
+dependencies = [
+  "matplotlib>=3.8",
+  "numpy>=1.26",
+  "pandas>=2.1",
+]
+
+[project.optional-dependencies]
+dev = [
+  "ipykernel>=6.29",
+  "jupyter>=1.0",
+  "nbclient>=0.10",
+  "nbformat>=5.10",
+  "pytest>=8.0",
+]
+
+[project.scripts]
+pairs-trading-demo = "pairs_trading.demo:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pairs_trading"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
